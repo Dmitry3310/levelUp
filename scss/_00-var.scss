@@ -1,0 +1,138 @@
+// Цвет //////////
+$color-0: #000000;
+$color-1: #ffffff;
+$color-text: #333;
+$color-accent: #f5135c;
+
+
+// Шрифты /////////////////////////
+$fontFamily: Montserrat;
+$fontSize: rem(18);
+
+
+// Брекпоинты ///////////
+$xs: 0;
+$sm: 576;
+$md: 768;
+$lg: 992;
+$xl: 1200;
+$xxl: 1400;
+
+
+// Размер контейнеров /////////
+$minWidth: 320;
+$maxWidth: 1920;
+$containerWidth: 1180;
+$containerPadding: 40;
+$widthContainer: $containerWidth + $containerPadding;
+
+
+// REM //////////////////////
+@function rem($px) {
+	$result: $px / 16 + rem;
+	@return $result;
+}
+
+// EM //////////////////////
+@function em($px, $current: 16) {
+	$result: ($px / $current) + em;
+	@return $result;
+}
+
+// %%% //////////////////////
+@function prc($px, $from) {
+	$result: ($px / $from) * 100%;
+	@return $result;
+}
+
+
+// Медиа /////////////////////////////
+@mixin des {
+	@media screen and (max-width: em($xl)) {
+		@content;
+	}
+}
+@mixin lep {
+	@media screen and (max-width: em($lg)) {
+		@content;
+	}
+}
+@mixin pad {
+	@media screen and (max-width: em($md)) {
+		@content;
+	}
+}
+@mixin mob {
+	@media screen and (max-width: em($sm)) {
+		@content;
+	}
+}
+@mixin fre($size) {
+	@media screen and (max-width: em($size)) {
+		@content;
+	}
+}
+
+
+// Шрифты /////////////////
+@font-face {
+	font-family: "PlumbCondensed";
+	src: url("../font/Plumb Condensed.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Trebuchet MS";
+	src: url("../font/Trebuchet MS Regular.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+
+// // Адаптивное свойство /////////////////////
+// @mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $widthContainer, $widthTo: $minWidth, $keepSize: 0) {
+// 	@if ($widthFrom == $widthContainer and $containerWidth == 0) {
+// 		$widthFrom: $maxWidth;
+// 	}
+// 	@if ($minSize <= 0) {
+// 		$minSize: 0.0001;
+// 	}
+// 	@if ($startSize <= 0) {
+// 		$startSize: 0.0001;
+// 	}
+
+// 	// Брейк-поинты в EM
+// 	$widthFromMedia: em($widthFrom);
+// 	$widthToMedia: em($widthTo);
+
+// 	// Формула плавающего значения
+// 	// Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+// 	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+// 	$yIntersection: -$widthTo * $slope + $minSize;
+// 	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+
+// 	// Получение значения свойства
+// 	$propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+// 	// Если отрицательные значения
+// 	@if ($minSize > $startSize) {
+// 		$propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+// 	}
+
+// 	@if $widthFrom == $widthContainer or $widthFrom == $maxWidth or $keepSize == 1 or $keepSize == 2 {
+// 		@media (min-width: $widthFromMedia) {
+// 			#{$property}: rem($startSize);
+// 		}
+// 	}
+// 	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+// 		#{$property}: $propertyValue;
+// 	}
+// 	@if $widthTo == $minWidth or $keepSize == 1 or $keepSize == 3 {
+// 		@media (max-width: $widthToMedia) {
+// 			#{$property}: rem($minSize);
+// 		}
+// 	}
+// }
+
+
